@@ -1,0 +1,126 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  /* height: 50px; */
+}
+.leftMenu {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 2rem;
+  /* align-items: center; */
+  height: 50px;
+}
+.leftMenu .logo {
+  width: 3rem;
+}
+
+.dropItems {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  z-index: 999;
+}
+.dropItems > li span {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  justify-content: flex-start;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  margin: 0;
+  gap: 0.5rem;
+  -webkit-box-shadow: -3px -3px 14px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -3px -3px 14px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -3px -3px 14px -1px rgba(0, 0, 0, 0.75);
+  transition: all 0.2s linear;
+}
+.drop li img {
+  padding-right: 0.5rem;
+}
+.headerCredentials {
+  display: inline-block;
+
+  justify-content: center;
+}
+.headerCredentials button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  color: var(--Medium-Gray);
+}
+.headerCredentials button:focus {
+  outline: 2px solid rebeccapurple;
+  border: none;
+}
+.headerCredentials button:hover {
+  color: var(--Almost-Black);
+}
+.usernameBtn {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.logoutBtn {
+  background: transparent;
+  border: 2px solid var(--Medium-Gray);
+}
+@media (min-width: 500px) and (max-width: 690px) {
+  header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    /* gap: 2rem; */
+    padding-inline: 0.5rem;
+  }
+  .leftMenu {
+    flex: 1;
+  }
+  .headerCredentials {
+    font-size: 0.6rem;
+    /* padding-left: 0.5rem; */
+  }
+  .headerCredentials button {
+    padding: 0.2rem 0.3rem;
+    /* border-radius: 1rem; */
+    font-size: 1rem;
+    color: var(--Medium-Gray);
+  }
+  .dropItems {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 0.4rem;
+  }
+
+  .dropItems > li span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .drop {
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    margin: 0;
+    transition: all 0.2s linear;
+  }
+  .drop li img {
+    padding-right: 0.2rem;
+  }
+  .drop li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dropItems > li span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+}

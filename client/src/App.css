@@ -1,0 +1,240 @@
+header {
+  z-index: 100;
+  max-width: 1240px;
+  display: flex;
+  justify-content: space-between;
+}
+header .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+button {
+  cursor: pointer;
+}
+.dropdown {
+  z-index: 500;
+}
+@media screen and (min-width: 450px) {
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    height: 50px;
+    margin-inline: auto;
+  }
+
+  .left-menu {
+    display: flex;
+
+    height: inherit;
+    align-self: center;
+    justify-content: space-between;
+    /* align-items: center; */
+  }
+  .logo {
+    padding-top: 1rem;
+  }
+  nav .wrapper {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 1rem 0rem;
+  }
+  nav .wrapper li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.5rem;
+  }
+  .wrapper li img {
+    /* display: inline; */
+  }
+  .wrapper ul li {
+    display: block;
+  }
+  .wrapper ul {
+    display: none;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 8px 1px 37px -13px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 8px 1px 37px -13px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 8px 1px 37px -13px rgba(0, 0, 0, 0.75);
+  }
+  .wrapper ul.drop {
+    display: block;
+  }
+  .credentials {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .credentials button {
+    color: var(--Almost-Black);
+    font-size: 1em;
+  }
+  .credentials button.usernameBtn {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+  .credentials button.logoutBtn {
+    /* width: 80%; */
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--Almost-Black);
+    background-color: transparent;
+  }
+  .closeImg__Container {
+    display: none;
+  }
+  .humberger {
+    display: none;
+  }
+}
+/* mobile */
+/* header.home .dropdown {
+  display: none;
+}
+header.home .credentials {
+  display: none;
+}
+header.home {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+} */
+@media screen and (max-width: 449px) {
+  header.home {
+    padding: 1rem;
+  }
+  header.home .dropdown {
+    display: none;
+  }
+  header.home .credentials {
+    display: none;
+  }
+  .dropdown {
+    position: fixed;
+    inset: 0;
+    background-color: var(--Almost-Black);
+  }
+  .dropdown nav .closeImg__Container {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    padding: 1rem;
+  }
+
+  .dropdown nav {
+    background-color: var(--Almost-White);
+    width: 75%;
+    margin-left: auto;
+    height: 100%;
+  }
+  .dropdown nav ul {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .dropdown nav ul li > span {
+    padding-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .dropdown .credentials button {
+    display: block;
+    margin-inline: auto;
+    margin-bottom: 1rem;
+    color: var(--Almost-Black);
+    font-size: 1rem;
+  }
+  .dropdown .credentials button.usernameBtn {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+  .dropdown .credentials button.logoutBtn {
+    width: 80%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--Almost-Black);
+    background-color: transparent;
+  }
+  /* .content {
+    flex-direction: column-reverse;
+    height: 80vh;
+    margin: ;
+  } */
+}
+/* Styling for content */
+
+.content {
+  display: flex;
+  /* grid-template-columns: repeat(2, 1fr); */
+  height: 80vh;
+  /* place-content: center; */
+  margin-inline: auto;
+  max-width: 1000px;
+  padding: 2rem;
+}
+.content .imageContainer {
+  /* height: 80vh; */
+  height: 100%;
+  width: 100%;
+  background-color: blueviolet;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content .rightContent img {
+  height: 100%;
+  /* width: 100%; */
+  object-fit: cover;
+  background-color: coral;
+  /* object-position:; */
+}
+.leftContent {
+  /* align-self: center; */
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.leftContent .details {
+  flex: 1;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+.leftContent .details h1 {
+  font-size: 3rem;
+  color: var(--Almost-Black);
+}
+.leftContent .details .description {
+  line-height: 1.5rem;
+  color: var(--Medium-Gray);
+  margin-bottom: 3rem;
+  /* flex: 1; */
+}
+.learnMore {
+  color: white;
+  background-color: var(--Almost-Black);
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+.leftContent .contentFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contentFooter img {
+  flex: 0.2;
+}
