@@ -13,6 +13,8 @@ app.use(bodyParser.json({ extended: true, limit: "30mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use("/auth", authRoute);
 connectDB();
-app.listen(4000, () => console.log("server is listeing on port 4000"));
+app.listen(process.env.PORT || 4000, () =>
+  console.log("server is listeing on port 4000")
+);
 
 // server.on("unHa")
