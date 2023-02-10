@@ -105,6 +105,18 @@ header {
     flex-direction: column-reverse;
   }
 }
+@media screen and (max-width: 460px) {
+  .contentFooter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-inline: auto;
+    width: 100%;
+    gap: auto;
+  }
+  .contentFooter img {
+    width: 4rem;
+  }
+}
 @media screen and (max-width: 700px) {
   .content .leftContent h1 {
     font-size: 2.5rem;
@@ -113,7 +125,6 @@ header {
     gap: 0.2rem;
   }
   .leftContent p {
-    /* color: var(--Medium-Gray); */
     line-height: 1.1rem;
   }
   .leftContent .learnMore {

@@ -7,16 +7,16 @@ import { UserContext } from "../Context/UserContext";
 const ProtectRoute = () => {
   const { setUserInfo, isAuthorized, setIsAuthorized, getPermission } =
     useContext(UserContext);
+
   async function run() {
     const result = await getPermission();
     setIsAuthorized(result);
-    localStorage.setItem(result, result);
   }
 
   useEffect(() => {
     run();
   }, []);
-
+  // const perm = await getPermission();
   return isAuthorized ? <Outlet /> : <Navigate to="/login" />;
 };
 

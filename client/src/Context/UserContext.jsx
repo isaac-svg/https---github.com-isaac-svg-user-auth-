@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { createContext } from "react";
-
+import { useNavigate, redirect } from "react-router-dom";
 export const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
+  // const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState("");
   const [logoutState, setLogoutState] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -19,7 +20,9 @@ const UserContextProvider = ({ children }) => {
       .then((data) => {
         console.log(data);
         if (data.success == true) {
+          redirect("/login");
           setLogoutState(data.success);
+          // navigate("/login");
         }
       });
   }

@@ -22,10 +22,6 @@ const Header = () => {
   const navigate = useNavigate();
   function logout() {
     logoutFunc();
-    if (logoutState) {
-      navigate("/login");
-      console.log("logout");
-    }
   }
   return (
     <header>
@@ -88,7 +84,7 @@ const Header = () => {
       </div>
       <div className="headerCredentials">
         <button className="usernameBtn">{userInfo}</button>
-        <button className="logoutBtn" onClick={() => logout()}>
+        <button className="logoutBtn" onClick={() => logoutFunc()}>
           Logout
         </button>
       </div>
