@@ -9,7 +9,7 @@ const UserContextProvider = ({ children }) => {
   const [logoutState, setLogoutState] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   function logoutFunc() {
-    fetch("http://localhost:4000/auth/logout", {
+    fetch("https://api-introsection.vercel.app/auth/logout", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,12 +27,15 @@ const UserContextProvider = ({ children }) => {
       });
   }
   const getPermission = async () => {
-    const response = await fetch("http://localhost:4000/auth/profile", {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://api-introsection.vercel.app/auth/profile",
+      {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     setIsAuthorized(data.success);
     setUserInfo(data.username);

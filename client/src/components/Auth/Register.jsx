@@ -12,7 +12,7 @@ const Register = () => {
   function register(e) {
     e.preventDefault();
     const user = { username, password, email };
-    fetch("http://localhost:4000/auth/register", {
+    fetch("https://api-introsection.vercel.app/auth/register", {
       method: "POST",
       credentials: "include",
       headers: {

@@ -10,7 +10,7 @@ const Login = () => {
   function login(e) {
     e.preventDefault();
     const user = { username, password };
-    fetch("http://localhost:4000/auth/login", {
+    fetch("https://api-introsection.vercel.app/auth/login", {
       method: "POST",
       credentials: "include",
 
