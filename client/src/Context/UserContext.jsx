@@ -17,31 +17,9 @@ const UserContextProvider = ({ children }) => {
       method: "POST",
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.success == true) {
-          redirect("/login");
-          setLogoutState(data.success);
-          // navigate("/login");
-        }
-      });
+      .then((data) => {});
   }
-  const getPermission = async () => {
-    const response = await fetch(
-      "https://api-introsection.vercel.app/auth/profile",
-      {
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    setIsAuthorized(data.success);
-    setUserInfo(data.username);
-    console.log(data);
-    return data.success;
-  };
+
   return (
     <UserContext.Provider
       value={{
@@ -51,7 +29,6 @@ const UserContextProvider = ({ children }) => {
         logoutState,
         isAuthorized,
         setIsAuthorized,
-        getPermission,
       }}
     >
       {children}

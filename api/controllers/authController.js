@@ -20,10 +20,20 @@ exports.registration = async (req, res) => {
       password: hasedPassword,
       email,
     });
-    return res.json({ success: true, message: "User created succesfully" });
+    jwt.sign(
+      { id: user._id, username: user.username },
+      process.env.SECRET,
+      {},
+      (err, token) => {
+        if (err) throw err;
+        res
+          .cookie("token", token)
+          .status(201)
+          .json({ success: true, username: user.username });
+      }
+    );
   } catch (error) {
     res.json({ success: false, message: "user creation failed" });
-    // res.json({ success: false, message: error.message });
   }
 };
 exports.login = async (req, res) => {
@@ -49,9 +59,12 @@ exports.login = async (req, res) => {
         message: "Username or Password incorect",
       });
     }
+    const token = req.cookies?.token;
+    console.log(token);
+    jwt.verify(token, process.env.SECRET, {}, (err, userData) => {
+      if (err) throw err;
 
-    const token = jwt.sign({ username, id: user._id }, process.env.SECRET, {
-      expiresIn: "30d",
+      res.status(200).json({});
     });
     return res.cookie("token", token).json({
       success: true,

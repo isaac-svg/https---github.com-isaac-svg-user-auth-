@@ -10,9 +10,10 @@ const Register = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   function register(e) {
+    // https://api-introsection.vercel.app/auth/register
     e.preventDefault();
     const user = { username, password, email };
-    fetch("https://api-introsection.vercel.app/auth/register", {
+    fetch("http://localhost:4000/auth/register", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -23,10 +24,8 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         const { success } = data;
-        if (success === true) {
-          navigate("/login");
-        }
-      });
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <section className="auth">
