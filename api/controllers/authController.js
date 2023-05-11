@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 exports.registration = async (req, res) => {
   const { username, password, email } = req.body;
 
-  if (!username || !password || !email) {
+  if (!username || !password) {
     return res.json({
       success: false,
       message: "please provide all credentials",
@@ -18,7 +18,6 @@ exports.registration = async (req, res) => {
     const user = await User.create({
       username,
       password: hasedPassword,
-      email,
     });
     jwt.sign(
       { id: user._id, username: user.username },
@@ -29,7 +28,7 @@ exports.registration = async (req, res) => {
         res
           .cookie("token", token)
           .status(201)
-          .json({ success: true, username: user.username });
+          .json({ success: true, username: user.username, id: user._id });
       }
     );
   } catch (error) {
@@ -64,11 +63,12 @@ exports.login = async (req, res) => {
     jwt.verify(token, process.env.SECRET, {}, (err, userData) => {
       if (err) throw err;
 
-      res.status(200).json({});
-    });
-    return res.cookie("token", token).json({
-      success: true,
-      message: "User is authorized",
+      res.cookie("token", token).json({
+        success: true,
+        message: "User is authorized",
+        username: userData.username,
+        id: userData.id,
+      });
     });
   } catch (error) {
     res.json({ success: false, message: error.message, token });
@@ -92,11 +92,19 @@ exports.profile = async (req, res) => {
     const isVerifiedUser = jwt.verify(token, process.env.SECRET);
     const { id } = isVerifiedUser;
     const user = await User.findById(id);
-
-    return res.json({
+    if (!user) {
+      res.json({
+        success: true,
+        message: "User is not authorized",
+        username: null,
+        id: null,
+      });
+    }
+    res.json({
       success: true,
       message: "User is authorized",
       username: user.username,
+      id,
     });
   } catch (error) {
     return res.json({ success: false, message: error.message });

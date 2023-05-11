@@ -13,15 +13,29 @@ import "../Hearder.css";
 import { ClickContext } from "../Context/ClickContext";
 import { UserContext } from "../Context/UserContext";
 import { useNavigate, redirect } from "react-router-dom";
+import { BASE_URL } from "../../utils";
 const Header = () => {
   const { showCompanyMenu, showFeatureMenu, handleDrop } =
     useContext(ClickContext);
   const featureRef = useRef(null);
   const companyRef = useRef(null);
-  const { userInfo, logoutFunc, logoutState } = useContext(UserContext);
+  const { userInfo, setUserInfo, logoutFunc, logoutState } =
+    useContext(UserContext);
   const navigate = useNavigate();
   function logout() {
-    logoutFunc();
+    fetch(`${BASE_URL}/logout`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUserInfo(null);
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <header>
@@ -84,7 +98,7 @@ const Header = () => {
       </div>
       <div className="headerCredentials">
         <button className="usernameBtn">{userInfo}</button>
-        <button className="logoutBtn" onClick={() => logoutFunc()}>
+        <button className="logoutBtn" onClick={() => logout()}>
           Logout
         </button>
       </div>

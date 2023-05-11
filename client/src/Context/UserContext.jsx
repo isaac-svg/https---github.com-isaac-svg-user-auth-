@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
-import { useNavigate, redirect } from "react-router-dom";
+import { BASE_URL } from "../../utils";
 export const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
@@ -8,18 +8,21 @@ const UserContextProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState("");
   const [logoutState, setLogoutState] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
-  function logoutFunc() {
-    fetch("https://api-introsection.vercel.app/auth/logout", {
+  useEffect(() => {
+    fetch(`${BASE_URL}/profile`, {
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      method: "POST",
+      method: "GET",
     })
       .then((res) => res.json())
-      .then((data) => {});
-  }
-
+      .then((data) => {
+        setUserInfo(data.username);
+      })
+      .catch((err) => err.message);
+  }, []);
+  const logoutFunc = () => {};
   return (
     <UserContext.Provider
       value={{

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Navigate, useNavigate, redirect } from "react-router-dom";
 import banner from "../../assets/images/farshad-rezvanian-Eelegt4hFNc-unsplash.jpg";
-
+import "./Auth.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +10,7 @@ const Login = () => {
   function login(e) {
     e.preventDefault();
     const user = { username, password };
-    fetch("https://api-introsection.vercel.app/auth/login", {
+    fetch("http://localhost:9002/auth/login", {
       method: "POST",
       credentials: "include",
 
@@ -63,9 +63,9 @@ const Login = () => {
           <button className="continue">Continue</button>
         </div>
 
-        <Link to={"/register"}>
+        <a href={"/register"}>
           <p>Don't have an acount? Create one</p>{" "}
-        </Link>
+        </a>
       </form>
       <div className="banner">
         <img src={banner} alt="banner" />
